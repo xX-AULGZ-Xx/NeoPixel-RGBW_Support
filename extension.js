@@ -3,7 +3,7 @@
     description: "Write light to NeoPixel RGBW",
     author: "xX_AULGZ_Xx",
     category: "Device Control",
-    version: "1.2.0",
+    version: "1.2.1",
     icon: "/static/icon.png", // Category icon
     color: "#27AE60", // Category color (recommend some blocks color)
     blocks: [ // Blocks in Category
@@ -163,7 +163,7 @@
                     </value>
                 </block>
             `
-        },
+        }
     ],
     chip: [
         "ESP32" // Chip support
