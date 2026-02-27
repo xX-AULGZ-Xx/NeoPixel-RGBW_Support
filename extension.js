@@ -1,9 +1,9 @@
 ({
     name: "NeoPixel", // Category Name
-    description: "Write light to NeoPixel",
-    author: "microBlock",
+    description: "Write light to NeoPixel RGBW",
+    author: "xX_AULGZ_Xx",
     category: "Device Control",
-    version: "1.0.0",
+    version: "1.2.0",
     icon: "/static/icon.png", // Category icon
     color: "#27AE60", // Category color (recommend some blocks color)
     blocks: [ // Blocks in Category
