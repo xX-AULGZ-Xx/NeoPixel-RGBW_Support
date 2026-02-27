@@ -19,7 +19,7 @@ Blockly.Python['neopixel_set_color1'] = function (block) {
   var green = parseInt(result[2], 16);
   var blue = parseInt(result[3], 16);
 
-  var code = `np[${value_n}] = (int(${red} * np.bright / 100), int(${green} * np.bright / 100), int(${blue} * np.bright / 100))\n`;
+  var code = `np[${value_n}] = (int(${red} * np.bright / 100), int(${green} * np.bright / 100), int(${blue} * np.bright / 100)) if np.bpp == 3 else (int(${red} * np.bright / 100), int(${green} * np.bright / 100), int(${blue} * np.bright / 100), 0)\n`;
   return code;
 };
 
@@ -29,7 +29,7 @@ Blockly.Python['neopixel_set_color2'] = function (block) {
   var value_green = Blockly.Python.valueToCode(block, 'green', Blockly.Python.ORDER_ATOMIC);
   var value_blue = Blockly.Python.valueToCode(block, 'blue', Blockly.Python.ORDER_ATOMIC);
 
-  var code = `np[${value_n}] = (int(${value_red} * np.bright / 100), int(${value_green} * np.bright / 100), int(${value_blue} * np.bright / 100))\n`;
+  var code = `np[${value_n}] = (int(${value_red} * np.bright / 100), int(${value_green} * np.bright / 100), int(${value_blue} * np.bright / 100)) if np.bpp == 3 else (int(${value_red} * np.bright / 100), int(${value_green} * np.bright / 100), int(${value_blue} * np.bright / 100), 0)\n`;
   return code;
 };
 
@@ -41,7 +41,7 @@ Blockly.Python['neopixel_fill_color1'] = function (block) {
   var green = parseInt(result[2], 16);
   var blue = parseInt(result[3], 16);
 
-  var code = `for i in range(np.n): np[i] = (int(${red} * np.bright / 100), int(${green} * np.bright / 100), int(${blue} * np.bright / 100))\n`;
+  var code = `for i in range(np.n): np[i] = (int(${red} * np.bright / 100), int(${green} * np.bright / 100), int(${blue} * np.bright / 100)) if np.bpp == 3 else (int(${red} * np.bright / 100), int(${green} * np.bright / 100), int(${blue} * np.bright / 100), 0)\n`;
   return code;
 };
 
@@ -50,7 +50,7 @@ Blockly.Python['neopixel_fill_color2'] = function (block) {
   var value_green = Blockly.Python.valueToCode(block, 'green', Blockly.Python.ORDER_ATOMIC);
   var value_blue = Blockly.Python.valueToCode(block, 'blue', Blockly.Python.ORDER_ATOMIC);
 
-  var code = `for i in range(np.n): np[i] = (int(${value_red} * np.bright / 100), int(${value_green} * np.bright / 100), int(${value_blue} * np.bright / 100))\n`;
+  var code = `for i in range(np.n): np[i] = (int(${value_red} * np.bright / 100), int(${value_green} * np.bright / 100), int(${value_blue} * np.bright / 100)) if np.bpp == 3 else (int(${value_red} * np.bright / 100), int(${value_green} * np.bright / 100), int(${value_blue} * np.bright / 100), 0)\n`;
   return code;
 };
 
@@ -60,7 +60,7 @@ Blockly.Python['neopixel_show'] = function (block) {
 };
 
 Blockly.Python['neopixel_clear'] = function (block) {
-  var code = 'for i in range(np.n): np[i] = (0, 0, 0)\n';
+  var code = 'for i in range(np.n): np[i] = (0, 0, 0) if np.bpp == 3 else (0, 0, 0, 0)\n';
   return code;
 };
 
@@ -76,13 +76,14 @@ Blockly.Python['neopixel_rainbow'] = function (block) {
       '    for i in range(np.n):',
       '      WheelPos = (i * 1 + j) & 255',
       '      if WheelPos < 85:',
-      '        np[i] = (int((WheelPos * 3) * np.bright / 100), int((255 - WheelPos * 3) * np.bright / 100), 0)',
+      '        color = (int((WheelPos * 3) * np.bright / 100), int((255 - WheelPos * 3) * np.bright / 100), 0)',
       '      elif WheelPos < 170:',
       '        WheelPos -= 85',
-      '        np[i] = (int((255 - WheelPos * 3) * np.bright / 100), 0, int((WheelPos * 3) * np.bright / 100))',
+      '        color = (int((255 - WheelPos * 3) * np.bright / 100), 0, int((WheelPos * 3) * np.bright / 100))',
       '      else:',
       '        WheelPos -= 170',
-      '        np[i] = (0, int((WheelPos * 3) * np.bright / 100), int((255 - WheelPos * 3) * np.bright / 100))',
+      '        color = (0, int((WheelPos * 3) * np.bright / 100), int((255 - WheelPos * 3) * np.bright / 100))',
+      '      np[i] = color if np.bpp == 3 else color + (0,)',
       '    np.write()',
       '    sleep_ms(wait)']);
 
