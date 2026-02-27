@@ -1,5 +1,5 @@
 ({
-    name: "NeoPixel", // Category Name
+    name: "NeoPixelRGBW", // Category Name
     description: "Write light to NeoPixel RGBW",
     author: "xX_AULGZ_Xx",
     category: "Device Control",
