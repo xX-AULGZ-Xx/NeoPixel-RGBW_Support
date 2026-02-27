@@ -25,7 +25,7 @@
 3. นำลิงก์ Repository ของ GitHub โครงการนี้ไปใส่ลงในช่อง **Extension Manager** เพื่อทำการติดตั้ง
 4. เมื่อติดตั้งเสร็จสมบูรณ์ จะมีหมวดหมู่ชื่อ **NeoPixelRGBW** โผล่ขึ้นมาตามภาพด้านล่าง:
 
-![ตัวอย่างการติดตั้งใน microBlock IDE]([https://raw.githubusercontent.com/microBlock-IDE/microBlock-IDE/master/images/extension-import.png](https://docs.google.com/document/d/1yeqtxiFJe5eBV-83QEcbW6IKwAOtraxYm49VMnjIDfk/edit?usp=sharing))
+[ตัวอย่างการติดตั้งใน microBlock IDE]((https://docs.google.com/document/d/1yeqtxiFJe5eBV-83QEcbW6IKwAOtraxYm49VMnjIDfk/edit?usp=sharing))
 
 ## ความเข้ากันได้ของระบบ (Compatibility)
 - ทดสอบและใช้งานร่วมกับ ESP32 บนฐานระบบของ MicroPython
@@ -33,4 +33,5 @@
 
 ## ลิขสิทธิ์ (License)
 MIT License
+
 
